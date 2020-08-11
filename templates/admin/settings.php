@@ -27,7 +27,7 @@ $post_types = get_post_types(array(
 <?php } ?>
 
 <div class="wrap">
-    <h1><?php _e('Content Audit - Exporter', 'content-audit-exporter'); ?></h1>
+    <h1><?php _e('Content Audit Exporter', 'content-audit-exporter'); ?></h1>
     <!-- FORM -->
     <form method="post" action="admin-post.php">
         <!-- POST TYPES -->
@@ -106,7 +106,12 @@ $post_types = get_post_types(array(
             ?>
             <tr class="importer-item row-actions">
                 <td class="import-system">
-                    <span class="importer-title"><?php echo $filename; ?></span>
+                    <span class="importer-title"><?php _e('Content Audit'); ?></span>
+                    <span class="importer-desc">
+                        <?php
+                        echo date("F d Y h:iA", filemtime($audit));
+                        ?>
+                    </span>
                 </td>
                 <td>
                     <span class="importer-action">

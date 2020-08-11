@@ -21,3 +21,11 @@
 .delete-form {
     display: inline-block;
 }
+
+.widefat td {
+    vertical-align: middle;
+}
+
+.importer-action {
+    margin-bottom: 0;
+}

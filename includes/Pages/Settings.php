@@ -83,7 +83,7 @@ class Settings extends BaseController
 
         // create our xlsx file
         $zipper = new \ZipArchive;
-        $filename = $dir . 'content-audit-' . date('Y-m-j') . '.xlsx';
+        $filename = $dir . 'content-audit-' . date('Y-m-j-h-i-A') . '.xlsx';
         $zipper->open($filename, \ZipArchive::CREATE | \ZipArchive::OVERWRITE);
 
         // add our content to the file

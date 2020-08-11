@@ -1,8 +1,8 @@
 {
   "name": "productive-laziness/content-audit-exporter",
-  "description": "TBD",
+  "description": "Make content auditing easy by exporting your post, pages, and custom post types to an XLSX file.",
   "type": "project",
-  "license": "GPLv2 or later",
+  "license": "GPLv3",
   "authors": [
     {
       "name": "Productive Laziness LLC",

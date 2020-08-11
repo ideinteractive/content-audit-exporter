@@ -1,0 +1,21 @@
+{
+  "name": "productive-laziness/content-audit-exporter",
+  "description": "TBD",
+  "type": "project",
+  "license": "GPLv2 or later",
+  "authors": [
+    {
+      "name": "Productive Laziness LLC",
+      "email": "support@productivelaziness.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "kasparsd/mini-sheets-php": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "PLContentAuditExporter\\": "./includes"
+    }
+  }
+}

@@ -1,0 +1,84 @@
+[
+    {
+        "name": "deliciousbrains/wp-background-processing",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/deliciousbrains/wp-background-processing.git",
+            "reference": "2cbee1abd1b49e1133cd8f611df4d4fc5a8b9800"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/deliciousbrains/wp-background-processing/zipball/2cbee1abd1b49e1133cd8f611df4d4fc5a8b9800",
+            "reference": "2cbee1abd1b49e1133cd8f611df4d4fc5a8b9800",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2"
+        },
+        "suggest": {
+            "coenjacobs/mozart": "Easily wrap this library with your own prefix, to prevent collisions when multiple plugins use this library"
+        },
+        "time": "2020-07-31T07:00:11+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "classmap": [
+                "classes/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0-or-later"
+        ],
+        "authors": [
+            {
+                "name": "Delicious Brains",
+                "email": "nom@deliciousbrains.com"
+            }
+        ],
+        "description": "WP Background Processing can be used to fire off non-blocking asynchronous requests or as a background processing tool, allowing you to queue tasks."
+    },
+    {
+        "name": "kasparsd/mini-sheets-php",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/kasparsd/mini-sheets-php.git",
+            "reference": "16e283906e7d38184025e88f1b42d6b7d7433baa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/kasparsd/mini-sheets-php/zipball/16e283906e7d38184025e88f1b42d6b7d7433baa",
+            "reference": "16e283906e7d38184025e88f1b42d6b7d7433baa",
+            "shasum": ""
+        },
+        "require-dev": {
+            "wp-coding-standards/wpcs": "^2.1"
+        },
+        "suggest": {
+            "ext-zip": "For generating XLSX files which are actually ZIP files."
+        },
+        "time": "2019-06-06T07:54:57+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "kasparsd\\MiniSheets\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Kaspars Dambis",
+                "email": "hi@kaspars.net"
+            }
+        ],
+        "description": "Library for creating the most basic Office Open XML and Excel XLSX files."
+    }
+]

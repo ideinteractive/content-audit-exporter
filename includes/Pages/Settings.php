@@ -107,13 +107,13 @@ class Settings extends BaseController
         );
 
         // if post type options are available
-        if (isset($_POST['post_type_option'])) {
+        if (isset($_POST['post_type_option']) && is_array(($_POST['post_type_option']))) {
             // for each post type
-            foreach ($_POST['post_type_option'] as $post_type) {
+            foreach ((array)$_POST['post_type_option'] as $post_type) {
                 // get our post type posts
                 $query = new \WP_Query(
                     array(
-                        'post_type' => $post_type,
+                        'post_type' => sanitize_text_field($post_type),
                         'posts_per_page' => -1
                     )
                 );
@@ -171,7 +171,7 @@ class Settings extends BaseController
 
         // if a file path exists
         if (isset($_POST['file_path'])) {
-            wp_delete_file($_POST['file_path']);
+            wp_delete_file(sanitize_text_field($_POST['file_path']));
         }
 
         // redirect the page to the configuration form

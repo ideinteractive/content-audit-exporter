@@ -4,6 +4,9 @@ global $wp_filesystem;
 $upload_dir = wp_upload_dir();
 $audit_dir = ($upload_dir['basedir'] . '/content-audits/');
 $audits = glob($audit_dir . '*.xlsx');
+usort($audits, function ($a, $b) {
+    return filemtime($b) - filemtime($a);
+});
 
 // get post types
 $post_types = get_post_types(array(
@@ -96,7 +99,7 @@ $post_types = get_post_types(array(
     </form>
     <!-- AUDITS -->
     <h2 class="title"><?php _e('Content Audits', 'content-audit-exporter'); ?></h2>
-    <table class="widefat importers striped">
+    <table class="audit-list striped">
         <tbody>
         <?php
         foreach ($audits as $audit) {
@@ -104,27 +107,24 @@ $post_types = get_post_types(array(
             $upload_url = wp_get_upload_dir();
             $file = $upload_url['baseurl'] . '/content-audits/' . $filename;
             ?>
-            <tr class="importer-item row-actions">
-                <td class="import-system">
-                    <span class="importer-title"><?php _e('Content Audit'); ?></span>
-                    <span class="importer-desc">
+            <tr>
+                <td>
+                    <span class="audit-date">
                         <?php
                         echo date("F d Y h:iA", filemtime($audit));
                         ?>
                     </span>
                 </td>
                 <td>
-                    <span class="importer-action">
-                        <a href="<?php echo $file; ?>">Download</a> |
-                        <!-- FORM -->
-                        <form method="post" action="admin-post.php" class="delete-form">
-                            <?php wp_nonce_field('ca_delete_content_audit_nonce'); ?>
-                            <input type="hidden" name="action" value="delete_content_audit"/>
-                            <input type="hidden" name="file_path" value="<?php echo $audit; ?>"/>
-                            <input class="delete-audit" type="submit"
-                                   value="<?php _e('Delete', 'content-audit-exporter'); ?>"/>
-                        </form>
-                    </span>
+                    <a href="<?php echo $file; ?>"><?php _e('Download', 'content-audit-exporter'); ?></a> |
+                    <!-- FORM -->
+                    <form method="post" action="admin-post.php" class="delete-form">
+                        <?php wp_nonce_field('ca_delete_content_audit_nonce'); ?>
+                        <input type="hidden" name="action" value="delete_content_audit"/>
+                        <input type="hidden" name="file_path" value="<?php echo $audit; ?>"/>
+                        <input class="delete-audit" type="submit"
+                               value="<?php _e('Delete', 'content-audit-exporter'); ?>"/>
+                    </form>
                 </td>
             </tr>
             <?php

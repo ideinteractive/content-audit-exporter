@@ -1,4 +1,38 @@
-.delete-audit {
+.audit-list {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+    font-size: 16px;
+    width: auto;
+    border-spacing: 0;
+}
+
+.audit-list tr {
+    color: #ddd;
+    font-size: 13px;
+    padding: 2px 0 0;
+    position: relative;
+    left: -9999em;
+}
+
+.audit-list tr td {
+    vertical-align: middle;
+    line-height: 1.4;
+    color: #555;
+    padding: 8px 10px;
+}
+
+.audit-list tr td a {
+    text-decoration: none;
+}
+
+.audit-list tr td a:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
+
+.audit-list .delete-audit {
     display: inline-block;
     background-color: transparent;
     border: 0;
@@ -8,24 +42,16 @@
     cursor: pointer;
 }
 
-.delete-audit:hover {
+.audit-list .delete-audit:hover {
     color: #dc3232;
     border: none;
 }
 
-.delete-audit:focus {
+.audit-list .delete-audit:focus {
     border: none;
     outline: none;
 }
 
-.delete-form {
+.audit-list .delete-form {
     display: inline-block;
-}
-
-.widefat td {
-    vertical-align: middle;
-}
-
-.importer-action {
-    margin-bottom: 0;
 }

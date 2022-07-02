@@ -17,34 +17,34 @@ $post_types = get_post_types(array(
 
 <?php if (isset($_GET['message']) && $_GET['message'] == '1') { ?>
     <div id='message' class='updated fade'>
-        <p><strong><?php _e('Content Audit Generated', 'content-audit-exporter'); ?></strong></p>
+        <p><strong><?php esc_html_e('Content Audit Generated', 'content-audit-exporter'); ?></strong></p>
     </div>
 <?php } else if (isset($_GET['message']) && $_GET['message'] == '2') { ?>
     <div id='message' class='updated fade'>
-        <p><strong><?php _e('Content Audit Removed', 'content-audit-exporter'); ?></strong></p>
+        <p><strong><?php esc_html_e('Content Audit Removed', 'content-audit-exporter'); ?></strong></p>
     </div>
 <?php } else if (isset($_GET['message']) && $_GET['message'] == '3') { ?>
     <div id='message' class='error fade'>
-        <p><strong><?php _e('No Post Types Were Selected', 'content-audit-exporter'); ?></strong></p>
+        <p><strong><?php esc_html_e('No Post Types Were Selected', 'content-audit-exporter'); ?></strong></p>
     </div>
 <?php } ?>
 
 <div class="wrap">
-    <h1><?php _e('Content Audit Exporter', 'content-audit-exporter'); ?></h1>
+    <h1><?php esc_html_e('Content Audit Exporter', 'content-audit-exporter'); ?></h1>
     <!-- FORM -->
     <form method="post" action="admin-post.php">
         <!-- POST TYPES -->
-        <p><?php _e('Post types found on WordPress.', 'content-audit-exporter'); ?></p>
+        <p><?php esc_html_e('Post types found on WordPress.', 'content-audit-exporter'); ?></p>
         <table class="form-table" role="presentation">
             <tbody>
             <tr>
                 <th scope="row">
-                    <?php _e('Post Types', 'content-audit-exporter'); ?>
+                    <?php esc_html_e('Post Types', 'content-audit-exporter'); ?>
                 </th>
                 <td>
                     <fieldset>
                         <legend class="screen-reader-text">
-                            <span><?php _e('Post Types', 'content-audit-exporter'); ?></span>
+                            <span><?php esc_html_e('Post Types', 'content-audit-exporter'); ?></span>
                         </legend>
                         <label for="post_type_option_post">
                             <input name="post_type_option[]" type="checkbox"
@@ -73,11 +73,11 @@ $post_types = get_post_types(array(
                                     <?php
                                 }
                                 ?>
-                                <label for="post_type_option_<?php echo $post_type; ?>">
+                                <label for="post_type_option_<?php esc_attr_e($post_type); ?>">
                                     <input name="post_type_option[]" type="checkbox"
-                                           id="post_type_option_<?php echo $post_type; ?>"
-                                           value="<?php echo $post_type; ?>">
-                                    <?php echo $post_type; ?>
+                                           id="post_type_option_<?php esc_attr_e($post_type); ?>"
+                                           value="<?php esc_attr_e($post_type);?>">
+                                    <?php esc_attr_e($post_type); ?>
                                 </label>
                                 <?php
                                 if ($i != $len - 1 && $i != 0) {
@@ -98,7 +98,7 @@ $post_types = get_post_types(array(
         <?php submit_button(__('Generate New Audit', 'content-audit-exporter')); ?>
     </form>
     <!-- AUDITS -->
-    <h2 class="title"><?php _e('Content Audits', 'content-audit-exporter'); ?></h2>
+    <h2 class="title"><?php esc_html_e('Content Audits', 'content-audit-exporter'); ?></h2>
     <table class="audit-list striped">
         <tbody>
         <?php
@@ -116,14 +116,14 @@ $post_types = get_post_types(array(
                     </span>
                 </td>
                 <td>
-                    <a href="<?php echo $file; ?>"><?php _e('Download', 'content-audit-exporter'); ?></a> |
+                    <a href="<?php echo esc_url($file); ?>"><?php esc_html_e('Download', 'content-audit-exporter'); ?></a> |
                     <!-- FORM -->
                     <form method="post" action="admin-post.php" class="delete-form">
                         <?php wp_nonce_field('ca_delete_content_audit_nonce'); ?>
                         <input type="hidden" name="action" value="delete_content_audit"/>
-                        <input type="hidden" name="file_path" value="<?php echo $audit; ?>"/>
+                        <input type="hidden" name="file_path" value="<?php esc_attr_e($audit); ?>"/>
                         <input class="delete-audit" type="submit"
-                               value="<?php _e('Delete', 'content-audit-exporter'); ?>"/>
+                               value="<?php esc_html_e('Delete', 'content-audit-exporter'); ?>"/>
                     </form>
                 </td>
             </tr>

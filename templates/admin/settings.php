@@ -9,7 +9,21 @@ usort($audits, function ($a, $b) {
 });
 
 // get post types
+$built_in_post_types = get_post_types(array(
+    'public' => true,
+    '_builtin' => true
+), 'names', 'and');
 $post_types = get_post_types(array(
+    'public' => true,
+    '_builtin' => false
+), 'names', 'and');
+
+// get taxonomies
+$built_in_taxonomies = get_taxonomies(array(
+    'public' => true,
+    '_builtin' => true
+), 'names', 'and');
+$taxonomies = get_taxonomies(array(
     'public' => true,
     '_builtin' => false
 ), 'names', 'and');
@@ -46,32 +60,14 @@ $post_types = get_post_types(array(
                         <legend class="screen-reader-text">
                             <span><?php _e('Post Types', 'content-audit-exporter'); ?></span>
                         </legend>
-                        <label for="post_type_option_post">
-                            <input name="post_type_option[]" type="checkbox"
-                                   id="post_type_option_post"
-                                   value="post" checked>
-                            post
-                        </label>
-                        <br>
-                        <label for="post_type_option_page">
-                            <input name="post_type_option[]" type="checkbox"
-                                   id="post_type_option_page"
-                                   value="page" checked>
-                            page
-                        </label>
                         <?php
                         $i = 0;
-                        $len = count($post_types);
+                        $len = count($built_in_post_types);
 
                         // if there are post types
-                        if ($post_types) {
+                        if ($built_in_post_types) {
                             // for each post type
-                            foreach ($post_types as $post_type) {
-                                if ($i == 0) {
-                                    ?>
-                                    <br>
-                                    <?php
-                                }
+                            foreach ($built_in_post_types as $post_type) {
                                 ?>
                                 <label for="post_type_option_<?php echo $post_type; ?>">
                                     <input name="post_type_option[]" type="checkbox"
@@ -79,12 +75,88 @@ $post_types = get_post_types(array(
                                            value="<?php echo $post_type; ?>">
                                     <?php echo $post_type; ?>
                                 </label>
+                                <br>
                                 <?php
-                                if ($i != $len - 1 && $i != 0) {
-                                    ?>
-                                    <br>
-                                    <?php
-                                }
+                                $i++;
+                            }
+                        }
+
+                        $i = 0;
+                        $len = count($post_types);
+
+                        // if there are post types
+                        if ($post_types) {
+                            // for each post type
+                            foreach ($post_types as $post_type) {
+                                ?>
+                                <label for="post_type_option_<?php echo $post_type; ?>">
+                                    <input name="post_type_option[]" type="checkbox"
+                                           id="post_type_option_<?php echo $post_type; ?>"
+                                           value="<?php echo $post_type; ?>">
+                                    <?php echo $post_type; ?>
+                                </label>
+                                <br>
+                                <?php
+                                $i++;
+                            }
+                        }
+                        ?>
+                    </fieldset>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <!-- TAXONOMIES -->
+        <p><?php _e('Taxonomies found on WordPress.', 'content-audit-exporter'); ?></p>
+        <table class="form-table" role="presentation">
+            <tbody>
+            <tr>
+                <th scope="row">
+                    <?php _e('Taxonomies', 'content-audit-exporter'); ?>
+                </th>
+                <td>
+                    <fieldset>
+                        <legend class="screen-reader-text">
+                            <span><?php _e('Taxonomies', 'content-audit-exporter'); ?></span>
+                        </legend>
+                        <?php
+                        $i = 0;
+                        $len = count($built_in_taxonomies);
+
+                        // if there are post types
+                        if ($built_in_taxonomies) {
+                            // for each post type
+                            foreach ($built_in_taxonomies as $taxonomy) {
+                                ?>
+                                <label for="taxonomy_option_<?php echo $taxonomy; ?>">
+                                    <input name="taxonomy_option[]" type="checkbox"
+                                           id="taxonomy_option_<?php echo $taxonomy; ?>"
+                                           value="<?php echo $taxonomy; ?>">
+                                    <?php echo $taxonomy; ?>
+                                </label>
+                                <br>
+                                <?php
+                                $i++;
+                            }
+                        }
+
+                        $i = 0;
+                        $len = count($taxonomies);
+
+                        // if there are post types
+                        if ($taxonomies) {
+                            // for each post type
+                            foreach ($taxonomies as $taxonomy) {
+                                ?>
+                                <label for="taxonomy_option_<?php echo $taxonomy; ?>">
+                                    <input name="taxonomy_option[]" type="checkbox"
+                                           id="taxonomy_option_<?php echo $taxonomy; ?>"
+                                           value="<?php echo $taxonomy; ?>">
+                                    <?php echo $taxonomy; ?>
+                                </label>
+                                <br>
+                                <?php
+                                $i++;
                             }
                         }
                         ?>

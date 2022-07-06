@@ -2,7 +2,7 @@
 /**
  * Manages our plugin deactivation
  *
- * @package productive-laziness/content-audit-exporter
+ * @package ide-interactive/content-audit-exporter
  */
 
 namespace PLContentAuditExporter\Base;

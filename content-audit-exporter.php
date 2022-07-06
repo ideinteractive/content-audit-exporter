@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Content Audit Exporter
-Plugin URI: https://productivelaziness.com/products/content-audit-exporter/
+Plugin URI: https://www.ideinteractive.com/products/content-audit-exporter/
 Description: Make content auditing easy by exporting your post, pages, and custom post types to an XLSX file.
-Version: 1.0
-Author: Productive Laziness LLC
-Author URI: https://productivelaziness.com
+Version: 1.1
+Author: IDE Interactive
+Author URI: https://www.ideinteractive.com/
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 */

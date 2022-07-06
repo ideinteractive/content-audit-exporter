@@ -3,7 +3,7 @@
 /**
  * Manages and handles the settings page
  *
- * @package productive-laziness/content-audit-exporter
+ * @package ide-interactive/content-audit-exporter
  */
 
 namespace PLContentAuditExporter\Pages;
@@ -50,7 +50,7 @@ class Settings extends BaseController
     {
         // if we are in the settings page
         if ($hook == 'tools_page_content-audit-exporter') {
-            wp_enqueue_style('admin_ca_stylesheet', $this->plugin_url . 'assets/admin/css/ca-admin.css');
+            wp_enqueue_style('admin_ca_stylesheet', $this->plugin_url . 'assets/admin/css/ca-admin.css?ver=1.1');
         }
     }
 
@@ -94,7 +94,8 @@ class Settings extends BaseController
             [
                 [
                     'ID',
-                    'Post Type',
+                    'Type',
+                    'Type Name',
                     'status',
                     'Title',
                     'Slug',
@@ -126,6 +127,7 @@ class Settings extends BaseController
                         [
                             [
                                 $post->ID,
+                                'Post Type',
                                 $post->post_type,
                                 $post->post_status,
                                 $post->post_title,
@@ -140,10 +142,45 @@ class Settings extends BaseController
                 }
             }
 
+            // if taxonomy options are available
+            if (isset($_POST['taxonomy_option']) && is_array(($_POST['taxonomy_option']))) {
+                // for each taxonomy
+                foreach ((array)$_POST['taxonomy_option'] as $taxonomy) {
+                    // get our taxonomy terms
+                    $terms = get_terms(sanitize_text_field($taxonomy), array(
+                        'hide_empty' => false,
+                    ));
+
+                    // if terms is not empty
+                    if (!empty($terms)) {
+                        // for each term
+                        foreach ($terms as $term) {
+                            // out put the information
+                            $builder->add_rows(
+                                [
+                                    [
+                                        $term->term_id,
+                                        'Taxonomy',
+                                        sanitize_text_field($taxonomy),
+                                        '',
+                                        $term->name,
+                                        $term->slug,
+                                        '',
+                                        '',
+                                        '',
+                                        get_term_link($term->term_id)
+                                    ],
+                                ]
+                            );
+                        }
+                    }
+                }
+            }
+
             // build our file
             $builder->build();
 
-            // clear the xlsx file
+            // close the xlsx file
             $zipper->close();
 
             // redirect the page to the settings page

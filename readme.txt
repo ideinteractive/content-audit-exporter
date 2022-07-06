@@ -1,10 +1,10 @@
 === Content Audit Exporter ===
-Contributors: tvledesign
+Contributors: tvledesign, ideinteractive
 Tags: content audit, content, audit
 Requires at least: 4.9
-Tested up to: 5.4.2
-Requires PHP: 7.0
-Stable tag: 1.0
+Tested up to: 6.0
+Requires PHP: 7.4
+Stable tag: 1.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -25,6 +25,11 @@ You will then find a 'Content Audit' option under the Tools menu in your WordPre
 2. Sample XLSX file.
 
 == Changelog ==
+= 1.1 =
+
+* Added in taxonomy support.
+* Fixed a bug where the content audits list was displaying only a white box. Since this fix was a CSS change, please make sure to clear your cache to properly see the new fix if you do not.
+
 = 1.0 =
 
 * Initial release.

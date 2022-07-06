@@ -2,7 +2,7 @@
 /**
  * Manages all our Base variables
  *
- * @package productive-laziness/content-audit-exporter
+ * @package ide-interactive/content-audit-exporter
  */
 
 namespace PLContentAuditExporter\Base;

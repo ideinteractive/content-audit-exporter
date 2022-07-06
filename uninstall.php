@@ -2,7 +2,7 @@
 /**
  * Trigger this file on plugin uninstall
  *
- * @package productive-laziness/content-audit-exporter
+ * @package ide-interactive/content-audit-exporter
  */
 
 // if uninstall.php is not called by WordPress, die

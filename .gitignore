@@ -22,13 +22,5 @@ node_modules/
 *.sql
 *.sqlite
 
-# ignore ide config files
-.idea/
-.idea/content-audit-exporter.iml
-.idea/misc.xml
-.idea/modules.xml
-.idea/php.xml
-.idea/vcs.xml
-
-#ignore vendor folder
-vendor/
+# ignore IDE config files
+.idea/*
